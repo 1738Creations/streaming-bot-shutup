@@ -9,12 +9,9 @@ var PartialMatchArray = [
 
 // Any username partially matching these has their message removed
 var PartialWeightedMatchArray = [
-	'chin',
-	'bot'
+	[['1738', 'on', 'test'], 2],
+	[['this', 'isa', 'test'], 3],
 ]
-
-// When iterating through the weighted array, this number of matches must be met before a message is deleted
-var WeightedMatch = 2;
 
 // The channel name to connect to
 var ChannelName = <replace_me>; // Name of channel to join, example: 'channel_name'
@@ -86,16 +83,35 @@ function onMessageHandler (channel, userstate, msg, self) {
 			}
 			if (ClearMessage == false)
 			{
-				for (let NameInArray of PartialWeightedMatchArray) {
-					var test = NameInArray.toString().toLowerCase();
-					if (NameToCheck.includes(test) == true)
+				// Iterate through the array of words from the current index
+				for (let SubArray of PartialWeightedMatchArray)
+				{
+					// We will check the number below (from primary array) against text items from this array
+					var WordsInArrayToCheck =  SubArray[0];
+
+					// When iterating through the weighted array, this number of matches must be met before a message is deleted
+					var WeightedMatch = SubArray[1];
+
+					// Iterate through each word in the words array
+					for (let NameInArray of WordsInArrayToCheck)
 					{
-						MatchesCounted += 1;
-						if (MatchesCounted == WeightedMatch) {
-							ClearMessage = true;
-							break;
+						// This is the text to verify
+						var SingleText = NameInArray.toString().toLowerCase();
+						if (NameToCheck.includes(SingleText) == true)
+						{
+							MatchesCounted += 1;
+							if (MatchesCounted == WeightedMatch) {
+								ClearMessage = true;
+								break;
+							}
 						}
 					}
+					
+					// Break the outer loop if we need to delete a message
+					if (ClearMessage == true)
+						{
+							break;
+						}
 				}
 			}
 			
@@ -124,7 +140,6 @@ function onMessageHandler (channel, userstate, msg, self) {
 			console.log('Should never get here');
             break;
     }
-
 }
 
 
