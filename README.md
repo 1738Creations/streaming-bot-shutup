@@ -64,9 +64,13 @@ There are 2 arrays and a variable which need to be customised:
 - PartialMatchArray (array)
   - Names will be matched against any single item in this array
 - PartialWeightedMatchArray (array)
-  - ... I'm going to remake this
-- WeightedMatch (int)
-  - Defaulted to '2'
+  - This has 2 items; an array and a number
+  - Array
+    - This is a list of partial strings we want to match
+  - Integer
+    - This is the number of matches the strings in this array index must match
+    - For instance: [['this', 'isa' 'test'], 2]
+    - ...would need to match 2 of these 3 strings in a username
 
 
 LIVE DEMO:
