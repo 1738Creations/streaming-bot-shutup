@@ -1,4 +1,4 @@
-Streaming Bot - Shutup (in progress)
+Streaming Bot - Shutup
 ======================
 A way to combat users harassing streamers with usernames.
 
