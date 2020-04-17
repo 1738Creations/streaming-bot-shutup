@@ -29,7 +29,20 @@ Scripts can be run from any machine. They don't need to be on the hosting comput
 
 MIXER:
 ======
-Haven't finished the Mixer version yet.
+It's assumed users have followed the installation on the dev sites...
+Ref: https://dev.mixer.com/guides/chat/introduction
+Ref: https://dev.mixer.com/guides/chat/chatbot
+
+Search the script for '<replace_me>' and replace the details as they're found:
+
+- access: <replace_me>,
+-- This can be found on the '/chatbot' link above by clicking the link in the matching code (simplest way of finding it)
+
+- const targetChannelID = <replace_me>
+-- This can be found: https://mixer.com/api/v1/channels/<channel_name>?fields=id
+-- Obviously change 'channel_name' to the name of the channel you want to join
+
+Run the script: node LastTwitterPost_mixer.js
 
 
 TWITCH:
