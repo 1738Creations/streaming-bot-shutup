@@ -14,9 +14,6 @@ var PartialWeightedMatchArray = [
 	[['this', 'isa', 'test'], 3],
 ]
 
-// The channel name to connect to
-//var ChannelName = <replace_me>; // Name of channel to join, example: 'channel_name'
-
 
 // Mixer
 // Instantiate a new Mixer Client
